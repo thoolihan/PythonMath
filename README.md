@@ -2,4 +2,4 @@
 Random math stuff in python
 
 ## Questions?
-(@thoolihan)[https://twitter.com/thoolihan]
+[@thoolihan](https://twitter.com/thoolihan)
