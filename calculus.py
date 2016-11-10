@@ -4,7 +4,7 @@ Calculus module
 
 import numpy as np
 
-def euler(dy_dx = lambda x,y: None, h = 1e-6, y0 = 1, start = 0, end = 1):
+def euler(dy_dx = lambda x,y: None, h = 1e-3, y0 = 1, start = 0, end = 1):
     """
     Use Euler method to approximate value based on derivative.
     Params:
@@ -24,16 +24,15 @@ def euler(dy_dx = lambda x,y: None, h = 1e-6, y0 = 1, start = 0, end = 1):
     print("1^2: %f euler pred: %f difference: %f" % (1**2, y_vals[-1], float(1**2) - y_vals[-1]))
     >>> 1^2: 1.000000 euler pred: 1.000001 difference: -0.000001
     """
-
     nsteps = float(end - start) / h
-    ys = [y0]
-    ds = [dy_dx(start-h, y0)]
+    ys = np.array([y0])
+    ds = np.array([dy_dx(start-h, y0)])
     for i in range(int(nsteps) + 1):
         x = start + i * h
         dyx = dy_dx(x, ys[i])
-        ds.append(dyx)
-        ys.append(ys[i] + h * dyx)
-    return ys[-1], ys, ds
+        ds = np.append(ds, dyx)
+        ys = np.append(ys, ys[i] + h * dyx)
+    return (ys[-1], ys, ds)
 
 def newton(iter = 10, x0 = 0., fx = lambda x: x, dx = lambda x: x):
     """
