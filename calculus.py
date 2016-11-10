@@ -2,6 +2,8 @@
 Calculus module
 """
 
+import numpy as np
+
 def euler(dy_dx = lambda x,y: None, h = 1e-6, y0 = 1, start = 0, end = 1):
     """
     Use Euler method to approximate value based on derivative.
@@ -32,3 +34,27 @@ def euler(dy_dx = lambda x,y: None, h = 1e-6, y0 = 1, start = 0, end = 1):
         ds.append(dyx)
         ys.append(ys[i] + h * dyx)
     return ys[-1], ys, ds
+
+def newton(iter = 10, x0 = 0., fx = lambda x: x, dx = lambda x: x):
+    """
+    Use Newton's method of finding a root (0) of a complex equation
+    Params:
+        iter: number of values to return
+        x0: initial x value to start with
+        fx: the function
+        dx: the derivative
+    Returns:
+        x_vals: a numpy array of the xvalues it guessed
+    Example:
+        x_vals = newton(iter = 2,
+                        x0 = 1
+                        fx = lambda x: 5*x**3 - 5*x + 7,
+                        dx = lambda x: 15*x**2 - 5)
+        print(x_vals)
+        >>>
+    """
+    x_vals = np.array([x0])
+    for i in range(iter):
+        x = x_vals[-1]
+        x_vals = np.append(x_vals, x - (fx(x)/dx(x)))
+    return x_vals
