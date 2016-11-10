@@ -57,3 +57,15 @@ def newton(iter = 10, x0 = 0., fx = lambda x: x, dx = lambda x: x):
         x = x_vals[-1]
         x_vals = np.append(x_vals, x - (fx(x)/dx(x)))
     return x_vals
+
+def mvt(a, b, fx = lambda x: x):
+    """
+    Mean value theorem
+    Params:
+        a: start of interval
+        b: end of interval
+        fx: function
+    Returns:
+        f_c: derivative of some point c that is a <= c <= b
+    """
+    return (fx(b) - fx(a))/(b - a)

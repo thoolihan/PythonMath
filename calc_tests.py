@@ -19,3 +19,10 @@ class CalcTests(unittest.TestCase):
         x_n = calc.newton(iter = 10, x0 = -2, fx = fx, dx = dx)
         self.assertAlmostEqual(x_n[2], -1.058263, places = 4,
                                msg = "Estimate of root does not match answer")
+
+    def test_mvt(self):
+        a = 1
+        b = 4
+        fx = lambda x: x**3
+        f_c = calc.mvt(a = a, b = b, fx = fx)
+        self.assertEqual(f_c, 21, msg = "MVT of c should be 21")
