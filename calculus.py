@@ -55,7 +55,7 @@ def newton(iter = 10, x0 = 0., fx = lambda x: x, dx = lambda x: x):
     x_vals = np.array([x0])
     for i in range(iter):
         x = x_vals[-1]
-        x_vals = np.append(x_vals, x - (fx(x)/dx(x)))
+        x_vals = np.append(x_vals, float(x - (fx(x)/dx(x))))
     return x_vals
 
 def mvt(a, b, fx = lambda x: x):
