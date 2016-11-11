@@ -27,7 +27,7 @@ def euler(dy_dx = lambda x,y: None, h = 1e-3, y0 = 1, start = 0, end = 1):
     nsteps = float(end - start) / h
     ys = np.array([y0])
     ds = np.array([dy_dx(start-h, y0)])
-    for i in range(int(nsteps) + 1):
+    for i in range(int(nsteps)):
         x = start + i * h
         dyx = dy_dx(x, ys[i])
         ds = np.append(ds, dyx)
