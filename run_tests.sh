@@ -1,1 +1,1 @@
-python -m unittest calc_tests
+python -m unittest tests.calc_tests
